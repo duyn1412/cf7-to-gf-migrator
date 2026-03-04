@@ -1,0 +1,491 @@
+/* CF7 to Gravity Forms Migrator - Admin Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --cf7gfm-primary: #6366f1;
+    --cf7gfm-primary-hover: #4f46e5;
+    --cf7gfm-success: #22c55e;
+    --cf7gfm-success-bg: #f0fdf4;
+    --cf7gfm-warning: #f59e0b;
+    --cf7gfm-warning-bg: #fffbeb;
+    --cf7gfm-error: #ef4444;
+    --cf7gfm-error-bg: #fef2f2;
+    --cf7gfm-info-bg: #eff6ff;
+    --cf7gfm-info: #3b82f6;
+    --cf7gfm-gray-50: #f9fafb;
+    --cf7gfm-gray-100: #f3f4f6;
+    --cf7gfm-gray-200: #e5e7eb;
+    --cf7gfm-gray-400: #9ca3af;
+    --cf7gfm-gray-600: #4b5563;
+    --cf7gfm-gray-800: #1f2937;
+    --cf7gfm-radius: 10px;
+    --cf7gfm-shadow: 0 1px 3px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .05);
+}
+
+.cf7gfm-wrap {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    max-width: 1400px;
+    padding-bottom: 40px;
+}
+
+/* ── Header ─────────────────────────────────────────── */
+.cf7gfm-header {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: var(--cf7gfm-radius);
+    padding: 28px 32px;
+    margin: 20px 0 24px;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, .35);
+}
+
+.cf7gfm-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff !important;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cf7gfm-title .dashicons {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    opacity: .85;
+}
+
+.cf7gfm-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, .85);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ── Legend ─────────────────────────────────────────── */
+.cf7gfm-legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.cf7gfm-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.cf7gfm-badge code {
+    background: rgba(0, 0, 0, .08);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.cf7gfm-badge--info {
+    background: var(--cf7gfm-info-bg);
+    color: var(--cf7gfm-info);
+}
+
+.cf7gfm-badge--success {
+    background: var(--cf7gfm-success-bg);
+    color: #15803d;
+}
+
+.cf7gfm-badge--pending {
+    background: var(--cf7gfm-gray-100);
+    color: var(--cf7gfm-gray-600);
+}
+
+/* ── Toolbar ─────────────────────────────────────────── */
+.cf7gfm-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid var(--cf7gfm-gray-200);
+    border-radius: var(--cf7gfm-radius);
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--cf7gfm-shadow);
+}
+
+.cf7gfm-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cf7gfm-gray-600);
+}
+
+.cf7gfm-toolbar-right {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.cf7gfm-selected-count {
+    font-size: 13px;
+    color: var(--cf7gfm-primary);
+    font-weight: 600;
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.cf7gfm-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px !important;
+    border-radius: 7px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    transition: all .15s ease;
+    height: auto !important;
+}
+
+.cf7gfm-btn .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+}
+
+.cf7gfm-btn--primary {
+    background: var(--cf7gfm-primary) !important;
+    border-color: var(--cf7gfm-primary) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, .35);
+}
+
+.cf7gfm-btn--primary:hover:not([disabled]) {
+    background: var(--cf7gfm-primary-hover) !important;
+    border-color: var(--cf7gfm-primary-hover) !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, .45);
+    transform: translateY(-1px);
+}
+
+.cf7gfm-btn--primary[disabled] {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.cf7gfm-btn--secondary {
+    background: #fff !important;
+    border-color: var(--cf7gfm-gray-200) !important;
+    color: var(--cf7gfm-gray-800) !important;
+}
+
+.cf7gfm-btn--secondary:hover {
+    border-color: var(--cf7gfm-primary) !important;
+    color: var(--cf7gfm-primary) !important;
+}
+
+.cf7gfm-btn--ghost {
+    background: transparent !important;
+    border-color: transparent !important;
+    color: var(--cf7gfm-gray-600) !important;
+}
+
+.cf7gfm-btn--ghost:hover {
+    color: var(--cf7gfm-primary) !important;
+    background: var(--cf7gfm-info-bg) !important;
+}
+
+.cf7gfm-btn--sm {
+    padding: 4px 10px !important;
+    font-size: 12px !important;
+    border-radius: 5px !important;
+}
+
+/* ── Progress ─────────────────────────────────────────── */
+.cf7gfm-progress-wrap {
+    background: #fff;
+    border: 1px solid var(--cf7gfm-gray-200);
+    border-radius: var(--cf7gfm-radius);
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--cf7gfm-shadow);
+}
+
+.cf7gfm-progress-bar {
+    height: 8px;
+    background: var(--cf7gfm-gray-200);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.cf7gfm-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--cf7gfm-primary), #8b5cf6);
+    border-radius: 99px;
+    width: 0%;
+    transition: width .3s ease;
+}
+
+.cf7gfm-progress-text {
+    font-size: 13px;
+    color: var(--cf7gfm-gray-600);
+    font-weight: 500;
+}
+
+/* ── Result ─────────────────────────────────────────── */
+.cf7gfm-result {
+    border-radius: var(--cf7gfm-radius);
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.cf7gfm-result--success {
+    background: var(--cf7gfm-success-bg);
+    border: 1px solid #86efac;
+    color: #15803d;
+}
+
+.cf7gfm-result--error {
+    background: var(--cf7gfm-error-bg);
+    border: 1px solid #fca5a5;
+    color: #b91c1c;
+}
+
+.cf7gfm-result h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.cf7gfm-result ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+}
+
+.cf7gfm-result li {
+    margin: 3px 0;
+}
+
+/* ── Table ─────────────────────────────────────────── */
+.cf7gfm-table {
+    border-radius: var(--cf7gfm-radius) !important;
+    border: 1px solid var(--cf7gfm-gray-200) !important;
+    overflow: hidden;
+    box-shadow: var(--cf7gfm-shadow);
+}
+
+.cf7gfm-table thead th {
+    background: var(--cf7gfm-gray-50) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--cf7gfm-gray-600) !important;
+    padding: 12px 14px !important;
+    white-space: nowrap;
+}
+
+.cf7gfm-col-check {
+    width: 36px !important;
+}
+
+.cf7gfm-table tbody tr {
+    transition: background .12s ease;
+}
+
+.cf7gfm-table tbody tr:hover {
+    background: var(--cf7gfm-gray-50);
+}
+
+.cf7gfm-table tbody tr.is-migrated {
+    background: #fafffe;
+}
+
+.cf7gfm-table tbody tr.is-migrating {
+    background: #f5f3ff;
+}
+
+.cf7gfm-table tbody tr.is-row-migrated {
+    background: #f0fdf4;
+}
+
+.cf7gfm-table td {
+    padding: 12px 14px !important;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--cf7gfm-gray-100) !important;
+    font-size: 13px;
+}
+
+/* CF7 ID badge */
+.cf7gfm-id {
+    display: inline-block;
+    background: var(--cf7gfm-gray-100);
+    border: 1px solid var(--cf7gfm-gray-200);
+    color: var(--cf7gfm-gray-600);
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-family: monospace;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Form title */
+.cf7gfm-form-title {
+    font-weight: 600;
+    color: var(--cf7gfm-gray-800);
+    font-size: 14px;
+}
+
+/* Field count */
+.cf7gfm-field-count {
+    display: inline-block;
+    background: var(--cf7gfm-info-bg);
+    color: var(--cf7gfm-info);
+    border-radius: 12px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Field tags */
+.cf7gfm-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: 280px;
+}
+
+.cf7gfm-field-tag {
+    display: inline-block;
+    background: var(--cf7gfm-gray-100);
+    color: var(--cf7gfm-gray-600);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-family: monospace;
+}
+
+.cf7gfm-field-tag--required {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Status */
+.cf7gfm-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.cf7gfm-status--migrated {
+    background: var(--cf7gfm-success-bg);
+    color: #15803d;
+}
+
+.cf7gfm-status--pending {
+    background: var(--cf7gfm-gray-100);
+    color: var(--cf7gfm-gray-600);
+}
+
+.cf7gfm-status--migrating {
+    background: #f5f3ff;
+    color: var(--cf7gfm-primary);
+    animation: cf7gfm-pulse 1s infinite;
+}
+
+.cf7gfm-status--error {
+    background: var(--cf7gfm-error-bg);
+    color: #b91c1c;
+}
+
+@keyframes cf7gfm-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .6;
+    }
+}
+
+/* GF title */
+.cf7gfm-gf-title {
+    font-size: 12px;
+    color: var(--cf7gfm-gray-600);
+    margin-top: 3px;
+}
+
+/* Loading */
+.cf7gfm-loading {
+    padding: 32px;
+    text-align: center;
+    color: var(--cf7gfm-gray-600);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Action buttons in table */
+.cf7gfm-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* Used On column */
+.cf7gfm-used-on {
+    min-width: 160px;
+    max-width: 220px;
+}
+
+.cf7gfm-used-on-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cf7gfm-used-on-list li {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+}
+
+.cf7gfm-used-on-list a {
+    color: var(--cf7gfm-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.cf7gfm-used-on-list a:hover {
+    text-decoration: underline;
+}
+
+.cf7gfm-edit-link {
+    opacity: 0.5;
+    font-size: 11px;
+    transition: opacity .15s;
+}
+
+.cf7gfm-edit-link:hover {
+    opacity: 1;
+}
