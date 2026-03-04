@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Migrate your Contact Form 7 (CF7) forms to Gravity Forms (GF) — including fields, email notifications, autoresponders, confirmations, and form entries (via CF7DB).
+Migrate Contact Form 7 (CF7) forms to Gravity Forms (GF) — fields, notifications, confirmations, and entries from CF7DB.
 
 == Description ==
 
