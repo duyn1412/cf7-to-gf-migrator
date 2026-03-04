@@ -1,4 +1,4 @@
-=== CF7 to Gravity Forms Migrator ===
+=== CF7 to GF Migrator ===
 Contributors: duyn1412
 Tags: contact form 7, gravity forms, migration, migrator, cf7
 Requires at least: 5.8
@@ -8,11 +8,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Migrate your Contact Form 7 forms to Gravity Forms — including fields, notifications, autoresponders, confirmations, and form entries (via CF7DB).
+Migrate your Contact Form 7 (CF7) forms to Gravity Forms (GF) — including fields, email notifications, autoresponders, confirmations, and form entries (via CF7DB).
 
 == Description ==
 
-**CF7 to Gravity Forms Migrator** helps you seamlessly move from Contact Form 7 to Gravity Forms without losing your data.
+**CF7 to GF Migrator** helps you seamlessly move from Contact Form 7 (CF7) to Gravity Forms (GF) without losing your data.
 
 = What gets migrated =
 

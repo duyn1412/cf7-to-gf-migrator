@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: CF7 to Gravity Forms Migrator
+ * Plugin Name: CF7 to GF Migrator
  * Plugin URI:  https://github.com/duyn1412/cf7-to-gf-migrator
- * Description: Migrate forms from Contact Form 7 to Gravity Forms. Supports batch migration with full settings (email, autoresponder, messages) and entry migration from CF7DB.
+ * Description: Migrate forms from Contact Form 7 (CF7) to Gravity Forms (GF). Supports batch migration with full settings (email notifications, autoresponder, confirmations) and entry migration from CF7DB.
  * Version:     1.0.0
  * Author:      Duy Nguyen
  * Author URI:  https://wptopd3v.com/
