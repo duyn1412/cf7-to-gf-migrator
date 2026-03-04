@@ -89,6 +89,7 @@ class CF7GF_Migrator {
         $like_bare   = '%[contact-form-7 id=' . $cf7_id . '%';
 
         // Search in post_content (classic editor, blocks, Gutenberg, raw shortcodes)
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $rows = $wpdb->get_results(
             $wpdb->prepare(
                 "SELECT DISTINCT ID, post_title, post_type, post_status
@@ -109,6 +110,7 @@ class CF7GF_Migrator {
         );
 
         // Also search post_meta for page builders (Elementor stores JSON in _elementor_data, etc.)
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $meta_rows = $wpdb->get_results(
             $wpdb->prepare(
                 "SELECT DISTINCT p.ID, p.post_title, p.post_type, p.post_status

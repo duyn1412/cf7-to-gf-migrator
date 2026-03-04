@@ -8,7 +8,7 @@
  * Author URI:  https://wptopd3v.com/
  * License:     GPL-2.0+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: cf7-gf-migrator
+ * Text Domain: cf7-to-gf-migrator
  * Requires at least: 5.8
  * Requires PHP: 7.4
  */
@@ -91,17 +91,17 @@ add_action( 'manage_wpcf7_contact_form_posts_custom_column', function ( $column,
 
     echo '<ul class="cf7gfm-col-used-on">';
     foreach ( $pages as $page ) {
-        $status_dot = $page['status'] === 'publish' ? '🟢' : ( $page['status'] === 'draft' ? '🟡' : '⚪' );
+        $status_dot = $page['status'] === 'publish' ? '&#x1F7E2;' : ( $page['status'] === 'draft' ? '&#x1F7E1;' : '&#x26AA;' );
         $type_label = ! in_array( $page['type'], [ 'page', 'post' ], true )
             ? ' <em>(' . esc_html( $page['type'] ) . ')</em>'
             : '';
 
         printf(
-            '<li>%s <a href="%s" target="_blank">%s</a>%s <a href="%s" title="Edit" style="opacity:.5;text-decoration:none;" target="_blank">✏️</a></li>',
-            $status_dot,
+            '<li>%s <a href="%s" target="_blank">%s</a>%s <a href="%s" title="Edit" style="opacity:.5;text-decoration:none;" target="_blank">&#x270F;&#xFE0F;</a></li>',
+            esc_html( $status_dot ),
             esc_url( $page['url'] ),
             esc_html( $page['title'] ),
-            $type_label,
+            wp_kses( $type_label, [ 'em' => [] ] ),
             esc_url( $page['edit_url'] )
         );
     }
@@ -210,8 +210,8 @@ function cf7gfm_ajax_migrate_entries() {
 
     $cf7_id     = intval( $_POST['cf7_id'] ?? 0 );
     $gf_id      = intval( $_POST['gf_id'] ?? 0 );
-    $form_name  = sanitize_text_field( $_POST['form_name'] ?? '' );
-    $re_migrate = (bool) ( $_POST['re_migrate'] ?? false );
+    $form_name  = sanitize_text_field( wp_unslash( $_POST['form_name'] ?? '' ) );
+    $re_migrate = (bool) rest_sanitize_boolean( wp_unslash( $_POST['re_migrate'] ?? false ) );
 
     if ( ! $cf7_id || ! $gf_id || ! $form_name ) {
         wp_send_json_error( [ 'message' => 'Missing required form data.' ] );

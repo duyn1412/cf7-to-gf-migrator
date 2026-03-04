@@ -30,12 +30,14 @@ class CF7GF_Entry_Migrator {
     public function table_exists() {
         global $wpdb;
         $table = $this->get_table();
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         return $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) ) === $table;
     }
 
     public function get_entry_count( $form_name ) {
         global $wpdb;
-        $table = $this->get_table();
+        $table = esc_sql( $this->get_table() );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         return (int) $wpdb->get_var(
             $wpdb->prepare( "SELECT COUNT(DISTINCT submit_time) FROM `{$table}` WHERE form_name = %s", $form_name )
         );
@@ -48,9 +50,10 @@ class CF7GF_Entry_Migrator {
      */
     public function get_forms_with_entries() {
         global $wpdb;
-        $table = $this->get_table();
+        $table = esc_sql( $this->get_table() );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared
         $rows  = $wpdb->get_results(
-            "SELECT form_name, COUNT(DISTINCT submit_time) as entry_count FROM `{$table}` GROUP BY form_name ORDER BY form_name"
+            "SELECT form_name, COUNT(DISTINCT submit_time) as entry_count FROM `{$table}` GROUP BY form_name ORDER BY form_name" // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         );
         $result = [];
         foreach ( $rows as $row ) {
@@ -75,13 +78,14 @@ class CF7GF_Entry_Migrator {
             return [ 'migrated' => 0, 'skipped' => 0, 'errors' => [ 'CF7DB table does not exist.' ] ];
         }
 
-        $table    = $this->get_table();
+        $table    = esc_sql( $this->get_table() );
         $gf_form  = GFAPI::get_form( $gf_form_id );
         $log      = get_option( self::ENTRY_LOG_OPTION, [] );
         $form_log = $log[ $cf7_id ] ?? [];
 
         $result = [ 'migrated' => 0, 'skipped' => 0, 'errors' => [] ];
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         $submit_times = $wpdb->get_col(
             $wpdb->prepare(
                 "SELECT DISTINCT submit_time FROM `{$table}` WHERE form_name = %s ORDER BY submit_time ASC",
@@ -99,6 +103,7 @@ class CF7GF_Entry_Migrator {
                 continue;
             }
 
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
             $rows = $wpdb->get_results(
                 $wpdb->prepare(
                     "SELECT field_name, field_value FROM `{$table}` WHERE form_name = %s AND submit_time = %s ORDER BY field_order ASC",
@@ -146,7 +151,7 @@ class CF7GF_Entry_Migrator {
 
         $entry = [
             'form_id'      => $gf_form_id,
-            'date_created' => date( 'Y-m-d H:i:s', (int) $submit_time ),
+            'date_created' => gmdate( 'Y-m-d H:i:s', (int) $submit_time ),
             'is_read'      => 0,
             'is_starred'   => 0,
             'status'       => 'active',
