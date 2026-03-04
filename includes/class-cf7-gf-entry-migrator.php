@@ -37,9 +37,9 @@ class CF7GF_Entry_Migrator {
     public function get_entry_count( $form_name ) {
         global $wpdb;
         $table = esc_sql( $this->get_table() );
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         return (int) $wpdb->get_var(
-            $wpdb->prepare( "SELECT COUNT(DISTINCT submit_time) FROM `{$table}` WHERE form_name = %s", $form_name )
+            $wpdb->prepare( "SELECT COUNT(DISTINCT submit_time) FROM `{$table}` WHERE form_name = %s", $form_name ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         );
     }
 
@@ -85,10 +85,10 @@ class CF7GF_Entry_Migrator {
 
         $result = [ 'migrated' => 0, 'skipped' => 0, 'errors' => [] ];
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $submit_times = $wpdb->get_col(
             $wpdb->prepare(
-                "SELECT DISTINCT submit_time FROM `{$table}` WHERE form_name = %s ORDER BY submit_time ASC",
+                "SELECT DISTINCT submit_time FROM `{$table}` WHERE form_name = %s ORDER BY submit_time ASC", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
                 $form_name
             )
         );
@@ -103,10 +103,10 @@ class CF7GF_Entry_Migrator {
                 continue;
             }
 
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             $rows = $wpdb->get_results(
                 $wpdb->prepare(
-                    "SELECT field_name, field_value FROM `{$table}` WHERE form_name = %s AND submit_time = %s ORDER BY field_order ASC",
+                    "SELECT field_name, field_value FROM `{$table}` WHERE form_name = %s AND submit_time = %s ORDER BY field_order ASC", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
                     $form_name,
                     $submit_time
                 )
