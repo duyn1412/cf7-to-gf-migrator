@@ -45,7 +45,7 @@ function cf7gfm_init() {
     require_once CF7GFM_PLUGIN_DIR . 'admin/class-cf7-gf-admin.php';
 
     if ( is_admin() ) {
-        new CF7GF_Admin();
+        new CF7GFM_Admin();
     }
 }
 add_action( 'plugins_loaded', 'cf7gfm_init' );
@@ -81,7 +81,7 @@ add_action( 'manage_wpcf7_contact_form_posts_custom_column', function ( $column,
 
     // Reuse our migrator's get_form_usage() method
     require_once CF7GFM_PLUGIN_DIR . 'includes/class-cf7-gf-migrator.php';
-    $migrator = new CF7GF_Migrator();
+    $migrator = new CF7GFM_Migrator();
     $pages    = $migrator->get_form_usage( $post_id );
 
     if ( empty( $pages ) ) {
@@ -141,7 +141,7 @@ function cf7gfm_ajax_migrate_form() {
     }
 
     require_once CF7GFM_PLUGIN_DIR . 'includes/class-cf7-gf-migrator.php';
-    $migrator = new CF7GF_Migrator();
+    $migrator = new CF7GFM_Migrator();
     $result   = $migrator->migrate_form( $cf7_id );
 
     if ( is_wp_error( $result ) ) {
@@ -175,7 +175,7 @@ function cf7gfm_ajax_migrate_multiple() {
     }
 
     require_once CF7GFM_PLUGIN_DIR . 'includes/class-cf7-gf-migrator.php';
-    $migrator = new CF7GF_Migrator();
+    $migrator = new CF7GFM_Migrator();
     $results  = $migrator->migrate_multiple( $cf7_ids );
 
     wp_send_json_success( $results );
@@ -193,7 +193,7 @@ function cf7gfm_ajax_get_forms() {
     }
 
     require_once CF7GFM_PLUGIN_DIR . 'includes/class-cf7-gf-migrator.php';
-    $migrator = new CF7GF_Migrator();
+    $migrator = new CF7GFM_Migrator();
     wp_send_json_success( $migrator->get_all_cf7_forms() );
 }
 add_action( 'wp_ajax_cf7gfm_get_forms', 'cf7gfm_ajax_get_forms' );
@@ -218,7 +218,7 @@ function cf7gfm_ajax_migrate_entries() {
     }
 
     require_once CF7GFM_PLUGIN_DIR . 'includes/class-cf7-gf-entry-migrator.php';
-    $migrator = new CF7GF_Entry_Migrator();
+    $migrator = new CF7GFM_Entry_Migrator();
 
     if ( ! $migrator->table_exists() ) {
         wp_send_json_error( [ 'message' => 'CF7DB table does not exist. The contact-form-7-to-database-extension plugin may not be installed or active.' ] );
@@ -251,7 +251,7 @@ function cf7gfm_ajax_get_entry_counts() {
     }
 
     require_once CF7GFM_PLUGIN_DIR . 'includes/class-cf7-gf-entry-migrator.php';
-    $migrator = new CF7GF_Entry_Migrator();
+    $migrator = new CF7GFM_Entry_Migrator();
 
     if ( ! $migrator->table_exists() ) {
         wp_send_json_success( [ 'has_cf7db' => false, 'counts' => [] ] );

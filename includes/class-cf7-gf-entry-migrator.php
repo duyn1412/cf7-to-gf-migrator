@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-class CF7GF_Entry_Migrator {
+class CF7GFM_Entry_Migrator {
 
     const ENTRY_LOG_OPTION = 'cf7gfm_entry_migration_log';
     const CF7DB_TABLE      = 'cf7dbplugin_submits';

@@ -78,7 +78,7 @@ class CF7GFM_Redirect {
                 </label>
             </p>
 
-            <div class="cf7gfm-redirect-option" id="cf7gfm-redirect-page-wrap" <?php echo $mode === 'page' ? '' : 'style="display:none"'; ?>>
+            <div class="cf7gfm-redirect-option" id="cf7gfm-redirect-page-wrap" <?php echo esc_attr( $mode ) === 'page' ? '' : 'style="display:none"'; ?>>
                 <?php
                 wp_dropdown_pages( [
                     'name'             => 'cf7gfm_redirect_page_id',
@@ -132,7 +132,7 @@ class CF7GFM_Redirect {
     public function save_meta( $post_id, $post ) {
         if (
             ! isset( $_POST['cf7gfm_redirect_nonce'] ) ||
-            ! wp_verify_nonce( $_POST['cf7gfm_redirect_nonce'], 'cf7gfm_redirect_save' )
+            ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['cf7gfm_redirect_nonce'] ) ), 'cf7gfm_redirect_save' )
         ) {
             return;
         }
@@ -152,7 +152,7 @@ class CF7GFM_Redirect {
             delete_post_meta( $post_id, self::META_CUSTOM_URL );
 
         } elseif ( $mode === 'custom' ) {
-            $custom_url = esc_url_raw( $_POST['cf7gfm_redirect_custom_url'] ?? '' );
+            $custom_url = esc_url_raw( wp_unslash( $_POST['cf7gfm_redirect_custom_url'] ?? '' ) );
             update_post_meta( $post_id, self::META_CUSTOM_URL, $custom_url );
             delete_post_meta( $post_id, self::META_REDIRECT );
 

@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-class CF7GF_Admin {
+class CF7GFM_Admin {
 
     public function __construct() {
         add_action( 'admin_menu', [ $this, 'register_menu' ] );

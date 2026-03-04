@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-class CF7GF_Migrator {
+class CF7GFM_Migrator {
 
     const MIGRATION_LOG_OPTION = 'cf7gfm_migration_log';
 
