@@ -83,7 +83,7 @@ class CF7GFM_Redirect {
                 wp_dropdown_pages( [
                     'name'             => 'cf7gfm_redirect_page_id',
                     'id'               => 'cf7gfm-redirect-page-id',
-                    'selected'         => $page_id,
+                    'selected'         => absint( $page_id ),
                     'show_option_none' => '— Select a page —',
                     'option_none_value' => '0',
                 ] );
